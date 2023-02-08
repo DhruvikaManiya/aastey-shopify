@@ -1,0 +1,96 @@
+section.aastey-three-block-section {
+  padding: 60px 0;
+}
+.conatiner {
+  max-width: 1270px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+h2.main-heading {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  color: #000000;
+  margin: 0 0 20px;
+}
+.row {
+  margin: 0 -10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-box {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding: 0 10px;
+}
+.product-box-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+  min-height: 400px;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+h3.box-title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 26px;
+}
+.box-price {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.start-text {
+  font-size: 14px;
+  margin: 0;
+  padding-right: 5px;
+  color: #000000;
+  font-weight: 500;
+  line-height: normal;
+}
+span.box-price-number {
+  background: #000000;
+  color: #ffffff;
+  padding: 0px 3px;
+  font-size: 14px;
+  line-height: normal;
+}
+.box-inner {
+  height: 100%;
+  border: 1px dashed #000000;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 400px;
+}
+.box-button a {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+  border-bottom: 2px solid #000000;
+  color: #000000;
+}
+.box-button {
+    margin-bottom: 15px;
+}
+@media (max-width: 768px){
+  .product-box-wrapper {
+    min-height: 360px;
+  }
+  .box-inner {
+    min-height: 360px;
+ }
+}
