@@ -1,0 +1,187 @@
+{{ 'aastey-three-blocks.css' | asset_url | stylesheet_tag }}
+<section class="aastey-three-block-section">
+  <div class="{{ section.settings.container }}">
+    <h2 class="main-heading">{{ section.settings.title }}</h2>
+    <div class="aastey-three-block-wrapper">
+      <div class="row product-slider">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'productblock' -%}
+              {%- assign product = block.settings.product -%}
+                {% if block.settings.product!= blank %}
+                  <div class="product-box">
+                    <div class="product-box-wrapper" style="background-image: url('{{ product.featured_image | img_url: 'original' }}');">
+                      <div class="box-inner">
+                        <h3 class="box-title">{{ product.title }}</h3>
+                        <div class="box-price">
+                          <p class="start-text">{{ block.settings.price_text }}</p>
+                          <span class="box-price-number">{{ product.price | money }}</span>      
+                        </div>
+                        <div class="box-button">
+                          <a href="{{ product.url }}">{{ block.settings.button_label }}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+            {%- when 'customblock' -%}
+              {% if block.settings.image != blank %}
+               <div class="product-box">
+                  <div class="product-box-wrapper" style="background-image: url('{{ block.settings.image | img_url: 'original' }}');">
+                    <div class="box-inner">
+                      <h3 class="box-title">{{ block.settings.title }}</h3>
+                      <div class="box-price">
+                        <p class="start-text">{{ block.settings.price_text }}</p>
+                        <span class="box-price-number">{{ block.settings.price }}</span>      
+                      </div>
+                      <div class="box-button">
+                        <a href="{{ block.settings.url }}">{{ block.settings.button_label }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function(){
+      $('.product-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        speed: 300,
+        infinite: false,
+        autoplay: false,
+        responsive: [
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 550,
+            settings: {
+              slidesToShow: 1.5,
+            }
+          },
+          {
+            breakpoint: 400,
+            settings: {
+              slidesToShow: 1,
+            }
+          }
+        ]
+      });
+    });
+</script>
+{% schema %}
+  {
+    "name": "Aastay Three Block",
+    "settings": [
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Page Width",
+        "options": [
+          {
+            "value": "conatiner",
+            "label": "Container"
+          },
+          {
+            "value": "full-width",
+            "label": "Full Width"
+          }
+        ],
+        "default": "conatiner"
+      },
+      {
+        "type": "header",
+        "content": "Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Products"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "productblock",
+        "name": "Product Block",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "price_text",
+            "label": "Price Sub Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          }
+        ]
+      },
+      {
+        "type": "customblock",
+        "name": "Custom Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "price_text",
+            "label": "Price Sub Text"
+          },
+          {
+            "type": "text",
+            "id": "price",
+            "label": "Price"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Button Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Aastay Three Block",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
